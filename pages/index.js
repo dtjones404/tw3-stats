@@ -19,15 +19,11 @@ export default function Index({ factions }) {
 export async function getStaticProps() {
   await dbConnect();
 
-  try {
-    const factions = await Faction.find({}, { _id: 0 })
-      .select('name gamesPlayed gamesWon winrateVsFaction')
-      .lean();
-    return {
-      props: { factions },
-      revalidate: 10000, // in seconds.
-    };
-  } catch (err) {
-    console.log(err);
-  }
+  const factions = await Faction.find({}, { _id: 0 })
+    .select('name gamesPlayed gamesWon winrateVsFaction')
+    .lean()
+    .exec();
+  return {
+    props: { factions },
+  };
 }

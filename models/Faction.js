@@ -57,5 +57,5 @@ const factionSchema = new mongoose.Schema(
 );
 
 // necessary for hot-reload dev environment
-export default mongoose.models.faction ||
+export default (mongoose.models ? mongoose.models.faction : null) ||
   mongoose.model('faction', factionSchema);

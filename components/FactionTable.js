@@ -63,7 +63,9 @@ export const FactionTable = ({ factions }) => {
                       getCellProps(cell),
                     ])}
                   >
-                    {cell.render('Cell')}
+                    {typeof cell.value === 'number'
+                      ? (cell.value * 100).toFixed(2) + '%'
+                      : cell.value}
                   </td>
                 ))}
               </tr>

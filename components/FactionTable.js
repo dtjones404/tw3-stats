@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useTable } from 'react-table';
 import { COLUMNS } from './columns';
-import styles from '../styles/FactionTable.module.scss';
+import styles from '../styles/FactionTable.module.css';
 
 const COLOR_KEY = {
   'rgb(255, 113, 103)': 0.43,

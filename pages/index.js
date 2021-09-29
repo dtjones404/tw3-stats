@@ -1,19 +1,9 @@
 import Faction from '../models/Faction.js';
 import dbConnect from '../lib/dbConnect';
+import { FactionTable } from '../components/FactionTable.js';
 
-export default function Index({ factions }) {
-  return (
-    <div>
-      {factions.map(({ name, gamesPlayed, gamesWon, winrateVsFaction }) => (
-        <div>
-          <div>{name}</div>
-          <div>{gamesPlayed}</div>
-          <div>{gamesWon}</div>
-          <div>{JSON.stringify(winrateVsFaction)}</div>
-        </div>
-      ))}
-    </div>
-  );
+export default function Index({ tableData }) {
+  return <FactionTable factions={tableData} />;
 }
 
 export async function getStaticProps() {
@@ -23,7 +13,11 @@ export async function getStaticProps() {
     .select('name gamesPlayed gamesWon winrateVsFaction')
     .lean()
     .exec();
+  const tableData = factions.map((obj) => ({
+    name: obj.name,
+    ...obj.winrateVsFaction,
+  }));
   return {
-    props: { factions },
+    props: { tableData },
   };
 }

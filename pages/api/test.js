@@ -10,7 +10,7 @@ export default async function handler(req, res) {
         const dummyArr = generateDummyData();
         const newData = await Promise.all(
           dummyArr.map((faction) => {
-            return fetch('http://localhost:3000/api/faction', {
+            return fetch('https://tw3-stats.vercel.app/api/faction', {
               method: 'PUT',
               body: JSON.stringify(faction),
               headers: {

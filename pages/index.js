@@ -1,24 +1,28 @@
-export default function Index({ posts }) {
-  return (
-    <div>
-      {posts.map(({ message, created_at, created_by }) => (
-        <div>
-          <div>{message}</div>
-          <div>{created_at}</div>
-          <div>{created_by}</div>
-        </div>
-      ))}
-    </div>
-  );
+// import factionController from '../lib/factionController';
+
+// export default function Index({ factions }) {
+//   return (
+//     <div>
+//       {factions.map(({ name, gamesPlayed, gamesWon, winrateVsFaction }) => (
+//         <div>
+//           <div>{name}</div>
+//           <div>{gamesPlayed}</div>
+//           <div>{gamesWon}</div>
+//           <div>{winrateVsFaction}</div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+
+export default function Index() {
+  return <div>hello world</div>;
 }
 
-export async function getStaticProps() {
-  const res = await fetch(
-    `http://codesmith-chat-server.herokuapp.com:80/catpics`
-  );
-  const posts = await res.json();
-  return {
-    props: { posts },
-    revalidate: 10, // in seconds.
-  };
-}
+// export async function getStaticProps() {
+//   let factions = await factionController.getFactions();
+//   return {
+//     props: { factions },
+//     revalidate: 10000, // in seconds.
+//   };
+// }

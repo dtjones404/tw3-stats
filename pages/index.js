@@ -1,4 +1,4 @@
-import Faction from '../models/Faction.js';
+import Faction, { factionNames } from '../models/Faction.js';
 import dbConnect from '../lib/dbConnect';
 import { FactionTable } from '../components/FactionTable.js';
 
@@ -14,7 +14,7 @@ export async function getStaticProps() {
     .lean()
     .exec();
   const tableData = factions.map((obj) => ({
-    name: obj.name,
+    name: factionNames[obj.name],
     ...obj.winrateVsFaction,
   }));
   return {

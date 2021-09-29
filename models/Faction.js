@@ -1,28 +1,28 @@
 import mongoose from 'mongoose';
 
-export const factionList = [
-  'empire',
-  'greenskins',
-  'dwarfs',
-  'vampireCounts',
-  'warriorsOfChaos',
-  'beastmen',
-  'bretonnia',
-  'woodElves',
-  'norsca',
-  'highElves',
-  'lizardmen',
-  'darkElves',
-  'skaven',
-  'tombKings',
-  'vampireCoast',
-  'kislev',
-  'khorne',
-  'nurgle',
-  'slaanesh',
-  'tzeentch',
-  'grandCathay',
-];
+export const factionNames = {
+  empire: 'Empire',
+  greenskins: 'Greenskins',
+  dwarfs: 'Dwarfs',
+  vampireCounts: 'Vampire Counts',
+  warriorsOfChaos: 'Warriors of Chaos',
+  beastmen: 'Beastmen',
+  bretonnia: 'Bretonnia',
+  woodElves: 'Wood Elves',
+  norsca: 'Norsca',
+  highElves: 'High Elves',
+  lizardmen: 'Lizardmen',
+  darkElves: 'Dark Elves',
+  skaven: 'Skaven',
+  tombKings: 'Tomb Kings',
+  vampireCoast: 'Vampire Coast',
+  kislev: 'Kislev',
+  khorne: 'Khorne',
+  nurgle: 'Nurgle',
+  slaanesh: 'Slaanesh',
+  tzeentch: 'Tzeentch',
+  grandCathay: 'Grand Cathay',
+};
 
 const factionSchema = new mongoose.Schema(
   {

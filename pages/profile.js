@@ -14,7 +14,6 @@ export default function Profile({ username, email, userGames }) {
 }
 
 export async function getServerSideProps({ req }) {
-  await dbConnect();
   //TEST
   // return {
   //   props: {
@@ -105,7 +104,7 @@ export async function getServerSideProps({ req }) {
   //   },
   // };
 
-  const session = await getSession(req);
+  const session = await getSession({ req });
   if (!session) {
     return {
       redirect: {
@@ -114,6 +113,7 @@ export async function getServerSideProps({ req }) {
       },
     };
   }
+  await dbConnect();
   const email = session.user.email;
   const username = User.findOne({ email });
   const userGames = await Game.find({

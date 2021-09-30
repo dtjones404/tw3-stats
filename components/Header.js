@@ -24,7 +24,7 @@ export const Header = () => {
         {!loading && !session && (
           <li>
             <Link href="/api/auth/signin">
-              <a onClick={signIn('github')}>Sign In</a>
+              <a onClick={() => signIn('github')}>Sign In</a>
             </Link>
           </li>
         )}
@@ -32,7 +32,7 @@ export const Header = () => {
         {session && (
           <li>
             <Link href="/api/auth/signout">
-              <a onClick={signOut()}>Sign Out</a>
+              <a onClick={() => signOut()}>Sign Out</a>
             </Link>
           </li>
         )}

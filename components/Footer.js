@@ -4,7 +4,7 @@ import styles from '../styles/Footer.module.css';
 export const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <Link href="/privacy">
+      <Link href="/terms">
         <a>Privacy Policy</a>
       </Link>
       <Link href="/terms">

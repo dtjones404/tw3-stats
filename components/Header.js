@@ -10,7 +10,6 @@ export const Header = () => {
   useEffect(() => {
     const checkLogin = async () => {
       const session = await getSession();
-      console.log({ session });
       setSession(session);
       setLoading(false);
     };

@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Faction, { factionNames } from '../models/Faction.js';
 import dbConnect from '../lib/dbConnect';
 import { FactionTable } from '../components/FactionTable.js';
+import { Header } from '../components/Header.js';
+import { Footer } from '../components/Footer.js';
 import styles from '../styles/Index.module.css';
 
 export default function Index({ tableData }) {
@@ -16,9 +18,7 @@ export default function Index({ tableData }) {
             content="Statistics for Total War: Warhammer III"
           />
         </Head>
-        <div>
-          <h1 className={styles.title}>Total Warhammer III Stats</h1>
-        </div>
+        <Header />
         <div className={styles.bgWrap}>
           <Image
             src="/bg.jpg"
@@ -30,6 +30,7 @@ export default function Index({ tableData }) {
         </div>
         <FactionTable factions={tableData} />
       </main>
+      <Footer />
     </div>
   );
 }

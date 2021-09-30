@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.logo {
+  margin: 0;
+  font-size: 1.45em;
+}
+
+.logo a:hover,
+.logo a:active {
+  text-decoration: none;
+}
+
+.logo a,
+.mainNav a {
+  display: block;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.navbar {
+}
+
+.mainNav {
+  display: flex;
+  margin-top: 5px;
+}

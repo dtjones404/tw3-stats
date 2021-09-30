@@ -1,0 +1,30 @@
+.matchContainer {
+  background: rgba(0, 0, 0, 0.945);
+  width: 80%;
+  height: 700px;
+  margin: 5em auto;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  border-radius: 15px;
+}
+
+.match {
+  border: 2px solid rgba(245, 245, 245, 0.856);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 15px;
+}
+
+.match > * {
+  flex: 0 0 33%;
+}
+
+.victory {
+  background: linear-gradient(rgba(0, 0, 255, 0.209), rgba(21, 21, 187, 0.105));
+}
+
+.defeat {
+  background: linear-gradient(rgba(255, 3, 3, 0.205), rgba(172, 14, 14, 0.105));
+}

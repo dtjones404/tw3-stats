@@ -7,15 +7,15 @@ import styles from '../styles/Layout.module.css';
 export default function Layout({ children }) {
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Total Warhammer Stats</title>
+        <meta
+          name="description"
+          content="Statistics for Total War: Warhammer III"
+        />
+      </Head>
+      <Header />
       <main className={styles.main}>
-        <Head>
-          <title>Total Warhammer Stats</title>
-          <meta
-            name="description"
-            content="Statistics for Total War: Warhammer III"
-          />
-        </Head>
-        <Header />
         <div className={styles.bgWrap}>
           <Image
             src="/bg.jpg"

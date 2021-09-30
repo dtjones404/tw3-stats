@@ -1,9 +1,22 @@
 import Link from 'next/link';
 import styles from '../styles/Header.module.css';
-import { signIn, signOut, useSession } from 'next-auth/client';
+import { useState, useEffect } from 'react';
+import { signIn, signOut, getSession } from 'next-auth/client';
 
 export const Header = () => {
-  const [session, loading] = useSession();
+  const [session, setSession] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      const session = await getSession();
+      console.log({ session });
+      setSession(session);
+      setLoading(false);
+    };
+    checkLogin();
+  }, []);
+
   return (
     <nav className={styles.header}>
       <h1 className={styles.logo}>

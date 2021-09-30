@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import { getSession, signIn } from 'next-auth/client';
+import { getSession } from 'next-auth/client';
 import MatchHistory from '../components/MatchHistory';
 import dbConnect from '../lib/dbConnect';
 import Game from '../models/Game';
@@ -115,7 +115,8 @@ export async function getServerSideProps({ req }) {
   }
   await dbConnect();
   const email = session.user.email;
-  const username = User.findOne({ email });
+  const user = await User.findOne({ email });
+  const username = user.username;
   const userGames = await Game.find({
     $or: [{ p1Username: username }, { p1Username: username }],
   });

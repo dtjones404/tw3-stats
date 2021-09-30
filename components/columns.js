@@ -2,6 +2,7 @@ export const COLUMNS = [
   {
     Header: '',
     accessor: 'name',
+    sticky: 'left',
   },
   {
     Header: 'Empire',

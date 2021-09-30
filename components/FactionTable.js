@@ -1,7 +1,8 @@
-import { useMemo } from 'react';
-import { useTable } from 'react-table';
+import { useMemo, useState } from 'react';
+import { useTable, useBlockLayout, useColumnOrder } from 'react-table';
 import { COLUMNS } from './columns';
-import styles from '../styles/FactionTable.module.css';
+import { useSticky } from 'react-table-sticky';
+import { Styles } from './tableStyles';
 
 const COLOR_KEY = {
   'rgb(255, 113, 103)': 0.43,
@@ -25,54 +26,98 @@ const getCellProps = (cellInfo) => ({
   },
 });
 
+function camelize(str) {
+  return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function (match, index) {
+    if (+match === 0) return ''; // or if (/\s+/.test(match)) for white spaces
+    return index === 0 ? match.toLowerCase() : match.toUpperCase();
+  });
+}
+
 export const FactionTable = ({ factions }) => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => factions, []);
 
-  const tableInstance = useTable({
-    columns: columns,
-    data: data,
-  });
+  const [sortedBy, setSortedBy] = useState({ name: null, order: [] });
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    tableInstance;
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    setColumnOrder,
+  } = useTable(
+    {
+      columns: columns,
+      data: data,
+    },
+    useBlockLayout,
+    useSticky,
+    useColumnOrder
+  );
+
+  const changeOrder = (values) => {
+    console.log(values);
+    if (values.name === sortedBy.name) {
+      const reversed = sortedBy.order.slice().reverse();
+      setSortedBy({ order: reversed });
+      setColumnOrder(['name', ...reversed]);
+    } else {
+      const matchupData = Object.entries(values).slice(1);
+      matchupData.sort((x, y) => y[1] - x[1]);
+      const newOrder = matchupData.map((x) => x[0]);
+      setSortedBy({ name: values.name, order: newOrder });
+      setColumnOrder(['name', ...newOrder]);
+    }
+  };
 
   return (
-    <div className={styles.factionContainer}>
-      <table {...getTableProps()}>
-        <thead>
+    <Styles>
+      <div
+        {...getTableProps()}
+        className="table sticky"
+        style={{ width: 1000, height: 500 }}
+      >
+        <div className="header">
           {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
+            <div {...headerGroup.getHeaderGroupProps()} className="tr">
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                <div {...column.getHeaderProps()} className="th">
+                  {column.render('Header')}
+                </div>
               ))}
-            </tr>
+            </div>
           ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
+        </div>
+        <div {...getTableBodyProps()} className="body">
           {rows.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <div
+                {...row.getRowProps()}
+                className="tr"
+                onClick={() => changeOrder(row.original)}
+              >
                 {row.cells.map((cell) => (
-                  <td
+                  <div
                     {...cell.getCellProps([
                       {
                         style: cell.column.style,
                       },
                       getCellProps(cell),
                     ])}
+                    className="td"
                   >
                     {typeof cell.value === 'number'
                       ? (cell.value * 100).toFixed(2) + '%'
                       : cell.value}
-                  </td>
+                  </div>
                 ))}
-              </tr>
+              </div>
             );
           })}
-        </tbody>
-      </table>
-    </div>
+        </div>
+      </div>
+    </Styles>
   );
 };

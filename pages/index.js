@@ -17,13 +17,16 @@ export default function Index({ tableData }) {
           />
         </Head>
         <div>
-          <Image
-            className={styles.landingImage}
-            src="/public/header.jpg"
-            alt="The Dawn of Grand Cathay"
-            layout="fill"
-          />
           <h1 className={styles.title}>Total Warhammer III Stats</h1>
+        </div>
+        <div className={styles.bgWrap}>
+          <Image
+            src="/bg.jpg"
+            alt="Warhammer III Splash"
+            layout="fill"
+            objectFit="cover"
+            quality={100}
+          />
         </div>
         <FactionTable factions={tableData} />
       </main>

@@ -1,9 +1,11 @@
-html,
 body {
-  padding: 0;
-  margin: 0;
+  display: block;
+  height: 100%;
+  margin: 0px;
+  background: rgb(38, 35, 33);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: rgb(255, 255, 255);
 }
 
 a {
@@ -16,8 +18,13 @@ a {
 }
 
 table {
-  font-size: 125%;
-  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  // align-items: stretch;
+  // justify-content: stretch;
+  font-size: 100%;
+  color: black;
+  // white-space: nowrap;
   margin: 0;
   border: none;
   border-collapse: separate;
@@ -25,10 +32,18 @@ table {
   table-layout: fixed;
   border: 1px solid black;
 }
+tr {
+  display: flex;
+}
 table td,
 table th {
   border: 1px solid black;
   padding: 0.5rem 1rem;
+  // flex-grow: 0;
+  // flex-shrink: 0;
+  height: 3em;
+  flex-basis: 7%;
+  min-width: 7%;
 }
 table thead th {
   padding: 3px;
@@ -44,36 +59,31 @@ table td {
   text-align: center;
 }
 
-table tbody th {
-  font-weight: 100;
-  font-style: italic;
-  text-align: left;
-  position: relative;
-}
 table td:first-child {
   position: sticky;
   left: 0;
   z-index: 2;
+  align-self: flex-start;
 }
-table tbody th {
-  position: sticky;
-  left: 0;
-  background: white;
-  z-index: 1;
-}
-caption {
-  text-align: left;
-  padding: 0.25rem;
-  position: sticky;
-  left: 0;
-}
+// table tbody th {
+//   position: sticky;
+//   left: 0;
+//   background: white;
+//   z-index: 1;
+// }
+// caption {
+//   text-align: left;
+//   padding: 0.25rem;
+//   position: sticky;
+//   left: 0;
+// }
 
-[role='region'][aria-labelledby][tabindex] {
-  width: 100%;
-  max-height: 98vh;
-  overflow: auto;
-}
-[role='region'][aria-labelledby][tabindex]:focus {
-  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
-  outline: 0;
-}
+// [role='region'][aria-labelledby][tabindex] {
+//   width: 100%;
+//   max-height: 98vh;
+//   overflow: auto;
+// }
+// [role='region'][aria-labelledby][tabindex]:focus {
+//   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+//   outline: 0;
+// }

@@ -25,6 +25,7 @@ export default function Index({ tableData }) {
             alt="Warhammer III Splash"
             layout="fill"
             objectFit="cover"
+            priority={true}
             quality={100}
           />
         </div>

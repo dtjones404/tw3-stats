@@ -3,13 +3,17 @@ import styles from '../styles/Header.module.css';
 import { signIn, signOut, useSession } from 'next-auth/client';
 
 export const Header = () => {
-  const { session, loading } = useSession();
+  const [session, loading] = useSession();
   return (
     <nav className={styles.header}>
       <h1 className={styles.logo}>
         <a href="#">Total Warhammer Stats</a>
       </h1>
-      <ul className={styles.mainNav}>
+      <ul
+        className={`${styles.mainNav} ${
+          !session && loading ? styles.loading : styles.loaded
+        }`}
+      >
         <li>
           <Link href="/">
             <a>Home</a>

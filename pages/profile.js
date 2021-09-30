@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import { getSession, signIn } from 'next-auth/client';
+import dbConnect from '../lib/dbConnect';
 import Game from '../models/Game';
 import User from '../models/User';
 
@@ -8,8 +9,8 @@ export default function Profile({ username, email, userGames }) {
 }
 
 export async function getServerSideProps(context) {
+  await dbConnect();
   const session = await getSession(context);
-  console.log(session);
   if (!session) {
     return {
       redirect: {

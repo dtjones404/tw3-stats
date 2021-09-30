@@ -13,7 +13,7 @@ export async function getServerSideProps(context) {
   if (!session) {
     return {
       redirect: {
-        destination: `/api/auth/signin?callbackUrl=${process.env.NEXTAUTH_URL}/profile`,
+        destination: `/api/auth/signin?callbackUrl=${process.env.NEXTAUTH_URL}profile`,
         permanent: false,
       },
     };

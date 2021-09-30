@@ -41,7 +41,7 @@ export const Header = () => {
         {!loading && !session && (
           <li>
             <Link href="/api/auth/signin">
-              <a onClick={() => signIn('github')}>Sign In</a>
+              <a onClick={() => signIn()}>Sign In</a>
             </Link>
           </li>
         )}

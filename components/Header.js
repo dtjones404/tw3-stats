@@ -11,7 +11,6 @@ export const Header = () => {
     const checkLogin = async () => {
       const session = await getSession();
       setSession(session);
-      console.log(session);
       setLoading(false);
     };
     checkLogin();

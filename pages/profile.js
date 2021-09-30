@@ -13,7 +13,7 @@ export default function Profile({ username, email, userGames }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ req }) {
   await dbConnect();
   //TEST
   // return {
@@ -105,7 +105,7 @@ export async function getServerSideProps(context) {
   //   },
   // };
 
-  const session = await getSession(context);
+  const session = await getSession(req);
   if (!session) {
     return {
       redirect: {

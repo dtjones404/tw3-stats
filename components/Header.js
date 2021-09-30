@@ -28,6 +28,11 @@ export const Header = () => {
       >
         <li>
           <Link href="/">
+            <a>Download</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/">
             <a>Home</a>
           </Link>
         </li>

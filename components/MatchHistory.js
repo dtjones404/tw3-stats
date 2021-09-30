@@ -11,7 +11,7 @@ export default function MatchHistory({ username, userGames }) {
             }`}
           >
             <div className={styles.player}>
-              <h3>{game.p1Username}</h3>
+              <h2>{game.p1Username}</h2>
               <h4>{game.p1Faction}</h4>
             </div>
             <div className={styles.result}>
@@ -19,7 +19,7 @@ export default function MatchHistory({ username, userGames }) {
               <h5>{game.duration}</h5>
             </div>
             <div className={styles.opponent}>
-              <h3>{game.p2Username}</h3>
+              <h2>{game.p2Username}</h2>
               <h4>{game.p2Faction}</h4>
             </div>
           </div>

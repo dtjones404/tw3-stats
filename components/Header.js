@@ -1,20 +1,9 @@
 import Link from 'next/link';
 import styles from '../styles/Header.module.css';
-import { useState, useEffect } from 'react';
-import { signIn, signOut, getSession } from 'next-auth/client';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 export const Header = () => {
-  const [session, setSession] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const checkLogin = async () => {
-      const session = await getSession();
-      setSession(session);
-      setLoading(false);
-    };
-    checkLogin();
-  }, []);
+  const { data: session, status } = useSession();
 
   return (
     <nav className={styles.header}>
@@ -23,7 +12,7 @@ export const Header = () => {
       </h1>
       <ul
         className={`${styles.mainNav} ${
-          !session && loading ? styles.loading : styles.loaded
+          status === 'loading' ? styles.loading : styles.loaded
         }`}
       >
         <li>
@@ -42,7 +31,7 @@ export const Header = () => {
           </Link>
         </li>
 
-        {!loading && !session && (
+        {status === 'unauthenticated' && (
           <li>
             <Link href="/api/auth/signin">
               <a onClick={() => signIn()}>Sign In</a>
@@ -50,7 +39,7 @@ export const Header = () => {
           </li>
         )}
 
-        {session && (
+        {status === 'authenticated' && (
           <li>
             <Link href="/api/auth/signout">
               <a onClick={() => signOut()}>Sign Out</a>

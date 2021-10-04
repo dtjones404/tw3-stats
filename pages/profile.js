@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import { getSession } from 'next-auth/client';
+import { getSession } from 'next-auth/react';
 import MatchHistory from '../components/MatchHistory';
 import dbConnect from '../lib/dbConnect';
 import Game from '../models/Game';

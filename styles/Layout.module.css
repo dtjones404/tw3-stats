@@ -16,13 +16,6 @@
   flex-flow: column;
 }
 
-.next {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
 .bgWrap {
   z-index: -1;
   position: absolute;

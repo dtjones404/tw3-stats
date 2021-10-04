@@ -3,13 +3,8 @@ import Image from 'next/image';
 import { Header } from './Header.js';
 import { Footer } from './Footer.js';
 import styles from '../styles/Layout.module.css';
-import { useEffect } from 'react';
 
 export default function Layout({ children }) {
-  useEffect(() => {
-    document.querySelector('#__next').className = styles.next;
-  }, []);
-
   return (
     <div className={styles.container}>
       <Head>

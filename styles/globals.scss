@@ -12,6 +12,13 @@ body {
   color: rgba(255, 255, 255, 090);
 }
 
+#__next {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
 a {
   color: inherit;
   text-decoration: none;

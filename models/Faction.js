@@ -22,6 +22,7 @@ export const factionNames = {
   slaanesh: 'Slaanesh',
   tzeentch: 'Tzeentch',
   grandCathay: 'Grand Cathay',
+  ogreKingdoms: 'Ogre Kingdoms',
 };
 
 const factionSchema = new mongoose.Schema(
@@ -51,6 +52,7 @@ const factionSchema = new mongoose.Schema(
       slaanesh: Number,
       tzeentch: Number,
       grandCathay: Number,
+      ogreKingdoms: Number,
     },
   },
   { timestamps: true }

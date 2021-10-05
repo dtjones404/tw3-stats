@@ -88,4 +88,8 @@ export const COLUMNS = [
     Header: 'Grand Cathay',
     accessor: 'grandCathay',
   },
+  {
+    Header: 'Ogre Kingdoms',
+    accessor: 'ogreKingdoms',
+  },
 ];

@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import Faction, { factionNames } from '../models/Faction';
+import Faction, { factionInterface, factionNames } from '../models/Faction';
 import dbConnect from '../lib/dbConnect';
 import FactionTable from '../components/FactionTable.js';
 

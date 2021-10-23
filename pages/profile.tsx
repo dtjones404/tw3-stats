@@ -3,7 +3,7 @@ import { getSession } from 'next-auth/react';
 import MatchHistory from '../components/MatchHistory';
 import dbConnect from '../lib/dbConnect';
 import Game, { gameInterface } from '../models/Game';
-import User from '../models/User';
+import User, { userInterface } from '../models/User';
 import { GetServerSideProps } from 'next';
 
 type Props = {
@@ -32,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   }
   await dbConnect();
   const email = session.user.email;
-  const user = await User.findOne({ email });
+  const user: userInterface = await User.findOne({ email });
   const username = user.username;
   const userGames = await Game.find({
     $or: [{ p1Username: username }, { p1Username: username }],

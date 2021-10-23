@@ -1,6 +1,12 @@
 import mongoose from 'mongoose';
 
-const userSchema = new mongoose.Schema(
+export interface userInterface {
+  username: string;
+  email: string;
+  apiKey: string;
+}
+
+const userSchema = new mongoose.Schema<userInterface>(
   {
     username: { type: String, required: true },
     email: { type: String, required: true },
@@ -11,4 +17,4 @@ const userSchema = new mongoose.Schema(
 
 // necessary for hot-reload dev environment
 export default (mongoose.models ? mongoose.models.user : null) ||
-  mongoose.model('user', userSchema);
+  mongoose.model<userInterface>('user', userSchema);

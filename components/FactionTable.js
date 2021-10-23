@@ -50,7 +50,6 @@ export const FactionTable = ({ factions }) => {
   );
 
   const changeOrder = (values) => {
-    console.log(values);
     if (values.name === sortedBy.name) {
       const reversed = sortedBy.order.slice().reverse();
       setSortedBy({ order: reversed });

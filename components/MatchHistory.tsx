@@ -1,6 +1,12 @@
+import { gameInterface } from '../models/Game';
 import styles from '../styles/MatchHistory.module.css';
 
-export default function MatchHistory({ username, userGames }) {
+type Props = {
+  username: string;
+  userGames: gameInterface[];
+};
+
+export default function MatchHistory({ username, userGames }: Props) {
   return (
     <div className={styles.matchContainer}>
       {userGames.map((game) => {

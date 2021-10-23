@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { Header } from './Header.js';
-import { Footer } from './Footer.js';
+import Header from './Header';
+import Footer from './Footer';
 import styles from '../styles/Layout.module.css';
 
 export default function Layout({ children }) {

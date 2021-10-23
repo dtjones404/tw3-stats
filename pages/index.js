@@ -1,7 +1,7 @@
-import Layout from '../components/Layout.js';
-import Faction, { factionNames } from '../models/Faction.js';
+import Layout from '../components/Layout';
+import Faction, { factionNames } from '../models/Faction';
 import dbConnect from '../lib/dbConnect';
-import { FactionTable } from '../components/FactionTable.js';
+import FactionTable from '../components/FactionTable.js';
 
 export default function Index({ tableData }) {
   return (

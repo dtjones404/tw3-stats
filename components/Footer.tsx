@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styles from '../styles/Footer.module.css';
 
-export const Footer = () => {
+export default function Footer() {
   return (
     <footer className={styles.footer}>
       <Link href="/terms">
@@ -15,4 +15,4 @@ export const Footer = () => {
       </Link>
     </footer>
   );
-};
+}

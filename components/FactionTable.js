@@ -26,7 +26,7 @@ const getCellProps = (cellInfo) => ({
   },
 });
 
-export const FactionTable = ({ factions }) => {
+export default function FactionTable({ factions }) {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => factions, []);
 
@@ -112,4 +112,4 @@ export const FactionTable = ({ factions }) => {
       </div>
     </Styles>
   );
-};
+}

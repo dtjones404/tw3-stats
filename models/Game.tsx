@@ -1,6 +1,15 @@
 import mongoose from 'mongoose';
 
-const gameSchema = new mongoose.Schema(
+export interface gameInterface {
+  p1Username: string;
+  p1Faction: string;
+  p2Username: string;
+  p2Faction: string;
+  duration: string;
+  winner?: string;
+}
+
+const gameSchema = new mongoose.Schema<gameInterface>(
   {
     p1Username: { type: String, required: true },
     p1Faction: { type: String, required: true },
@@ -14,4 +23,4 @@ const gameSchema = new mongoose.Schema(
 
 // necessary for hot-reload dev environment
 export default (mongoose.models ? mongoose.models.game : null) ||
-  mongoose.model('game', gameSchema);
+  mongoose.model<gameInterface>('game', gameSchema);

@@ -26,7 +26,7 @@ const getCellProps = (cellInfo) => ({
   },
 });
 
-export const FactionTable = ({ factions }) => {
+export default function FactionTable({ factions }) {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => factions, []);
 
@@ -52,11 +52,11 @@ export const FactionTable = ({ factions }) => {
   const changeOrder = (values) => {
     if (values.name === sortedBy.name) {
       const reversed = sortedBy.order.slice().reverse();
-      setSortedBy({ order: reversed });
+      setSortedBy({ ...sortedBy, order: reversed });
       setColumnOrder(['name', ...reversed]);
     } else {
       const matchupData = Object.entries(values).slice(1);
-      matchupData.sort((x, y) => y[1] - x[1]);
+      matchupData.sort((x, y) => +y[1] - +x[1]);
       const newOrder = matchupData.map((x) => x[0]);
       setSortedBy({ name: values.name, order: newOrder });
       setColumnOrder(['name', ...newOrder]);
@@ -112,4 +112,4 @@ export const FactionTable = ({ factions }) => {
       </div>
     </Styles>
   );
-};
+}

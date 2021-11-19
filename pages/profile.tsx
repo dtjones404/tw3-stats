@@ -2,10 +2,17 @@ import Layout from '../components/Layout';
 import { getSession } from 'next-auth/react';
 import MatchHistory from '../components/MatchHistory';
 import dbConnect from '../lib/dbConnect';
-import Game from '../models/Game';
-import User from '../models/User';
+import Game, { gameInterface } from '../models/Game';
+import User, { userInterface } from '../models/User';
+import { GetServerSideProps } from 'next';
 
-export default function Profile({ username, email, userGames }) {
+type Props = {
+  username: string;
+  email: string;
+  userGames: gameInterface[];
+};
+
+export default function Profile({ username, email, userGames }: Props) {
   return (
     <Layout>
       <MatchHistory username={username} userGames={userGames} />
@@ -13,7 +20,7 @@ export default function Profile({ username, email, userGames }) {
   );
 }
 
-export async function getServerSideProps({ req }) {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const session = await getSession({ req });
   if (!session) {
     return {
@@ -25,7 +32,7 @@ export async function getServerSideProps({ req }) {
   }
   await dbConnect();
   const email = session.user.email;
-  const user = await User.findOne({ email });
+  const user: userInterface = await User.findOne({ email });
   const username = user.username;
   const userGames = await Game.find({
     $or: [{ p1Username: username }, { p1Username: username }],
@@ -37,4 +44,4 @@ export async function getServerSideProps({ req }) {
       userGames,
     },
   };
-}
+};

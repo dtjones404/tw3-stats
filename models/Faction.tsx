@@ -25,7 +25,37 @@ export const factionNames = {
   ogreKingdoms: 'Ogre Kingdoms',
 };
 
-const factionSchema = new mongoose.Schema(
+export interface factionInterface {
+  name: string;
+  gamesPlayed: number;
+  gamesWon: number;
+  winrateVsFaction: {
+    empire: number;
+    greenskins: number;
+    dwarfs: number;
+    vampireCounts: number;
+    warriorsOfChaos: number;
+    beastmen: number;
+    bretonnia: number;
+    woodElves: number;
+    norsca: number;
+    highElves: number;
+    lizardmen: number;
+    darkElves: number;
+    skaven: number;
+    tombKings: number;
+    vampireCoast: number;
+    kislev: number;
+    khorne: number;
+    nurgle: number;
+    slaanesh: number;
+    tzeentch: number;
+    grandCathay: number;
+    ogreKingdoms: number;
+  };
+}
+
+const factionSchema = new mongoose.Schema<factionInterface>(
   {
     name: String,
     gamesPlayed: Number,
@@ -60,4 +90,4 @@ const factionSchema = new mongoose.Schema(
 
 // necessary for hot-reload dev environment
 export default (mongoose.models ? mongoose.models.faction : null) ||
-  mongoose.model('faction', factionSchema);
+  mongoose.model<factionInterface>('faction', factionSchema);

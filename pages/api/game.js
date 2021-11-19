@@ -1,5 +1,5 @@
 import dbConnect from '../../lib/dbConnect';
-import Game from '../../models/Game.js';
+import Game from '../../models/Game';
 
 export default async function handler(req, res) {
   await dbConnect();
